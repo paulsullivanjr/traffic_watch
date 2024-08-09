@@ -14,8 +14,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: "#FD4F00",
-      }
+        twBlue: {
+          dark: "#003366",
+          DEFAULT: "#00529C",
+          light: "#337ABD"
+        },
+        twRed: {
+          dark: "#A1103A",
+          DEFAULT: "#E0144C",
+          light: "#F05E7A"
+        },
+        twYellow: {
+          dark: "#CCB313",
+          DEFAULT: "#FFE317",
+          light: "#FFF04D"
+        }
+      },
+      fontFamily: {
+        brand: ["sans-serif"],
+      },
+      fontWeight: {
+        regular: "normal",
+        bold: "bold",
+        medium: "medium",
+        semibold: "semibold"
+
+      },
     },
   },
   plugins: [

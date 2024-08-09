@@ -3,3 +3,31 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("/fonts/WorkSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("/fonts/WorkSans-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("/fonts/WorkSans-Medium.ttf");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("/fonts/WorkSans-SemiBold.ttf");
+  font-weight: semibold;
+  font-style: normal;
+}
