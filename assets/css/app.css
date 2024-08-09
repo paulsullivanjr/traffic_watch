@@ -32,13 +32,21 @@
   font-style: normal;
 }
 
+.menu-item {
+  @apply block px-4 py-2 text-sm font-brand font-regular text-white;
+}
+
+.menu-item:hover {
+  @apply hover:text-twBlue-light;
+}
+
 .img-down-arrow::after {
   content: "";
   position: absolute;
   right: -10px;
   top: 45%;
   transform: translateY(-50%);
-  border-width: 3px 3px 0 3px;
-  border-color: white transparent transparent transparent;
+  border-width: 0 3px 3px 3px;
+  border-color: transparent transparent white transparent;
   border-style: solid;
 }
