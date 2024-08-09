@@ -31,3 +31,14 @@
   font-weight: semibold;
   font-style: normal;
 }
+
+.img-down-arrow::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 45%;
+  transform: translateY(-50%);
+  border-width: 3px 3px 0 3px;
+  border-color: white transparent transparent transparent;
+  border-style: solid;
+}
