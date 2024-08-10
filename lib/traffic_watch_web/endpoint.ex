@@ -25,6 +25,12 @@ defmodule TrafficWatchWeb.Endpoint do
     gzip: false,
     only: TrafficWatchWeb.static_paths()
 
+  plug Plug.Static,
+    at: "/assets",
+    from: {:traffic_watch, "priv/static"},
+    gzip: false,
+    only: ~w(images fonts js css favicon.ico robots.txt)
+
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do

@@ -1,52 +1,53 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "leaflet/dist/leaflet.css";
 
 /* This file is for your main application CSS */
 
 @font-face {
-  font-family: "WorkSans";
-  src: url("/fonts/WorkSans-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "WorkSans";
+    src: url("/fonts/WorkSans-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "WorkSans";
-  src: url("/fonts/WorkSans-Bold.ttf");
-  font-weight: bold;
-  font-style: normal;
+    font-family: "WorkSans";
+    src: url("/fonts/WorkSans-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "WorkSans";
-  src: url("/fonts/WorkSans-Medium.ttf");
-  font-weight: medium;
-  font-style: normal;
+    font-family: "WorkSans";
+    src: url("/fonts/WorkSans-Medium.ttf");
+    font-weight: medium;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "WorkSans";
-  src: url("/fonts/WorkSans-SemiBold.ttf");
-  font-weight: semibold;
-  font-style: normal;
+    font-family: "WorkSans";
+    src: url("/fonts/WorkSans-SemiBold.ttf");
+    font-weight: semibold;
+    font-style: normal;
 }
 
 .menu-item {
-  @apply block px-4 py-2 text-sm font-brand font-regular text-white;
+    @apply block px-4 py-2 text-sm font-brand font-regular text-white;
 }
 
 .menu-item:hover {
-  @apply hover:text-twBlue-light;
+    @apply hover:text-twBlue-light;
 }
 
 .img-down-arrow::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 45%;
-  transform: translateY(-50%);
-  border-width: 0 3px 3px 3px;
-  border-color: transparent transparent white transparent;
-  border-style: solid;
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 45%;
+    transform: translateY(-50%);
+    border-width: 0 3px 3px 3px;
+    border-color: transparent transparent white transparent;
+    border-style: solid;
 }

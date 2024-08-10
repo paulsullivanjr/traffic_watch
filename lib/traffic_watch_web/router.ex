@@ -20,7 +20,8 @@ defmodule TrafficWatchWeb.Router do
   scope "/", TrafficWatchWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", MapLive, :index
+    # get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
