@@ -8,7 +8,9 @@ defmodule TrafficWatchWeb.MapLive do
 
   def render(assigns) do
     ~H"""
-    <div id="map" class="w-[500px] h-[500px] p-20" phx-hook="Map"></div>
+    <div class="flex justify-end p-10">
+      <div id="map" class="w-[500px] h-[500px] bg-gray-200 border" phx-hook="Map"></div>
+    </div>
     """
   end
 end
