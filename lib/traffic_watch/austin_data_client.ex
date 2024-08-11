@@ -11,7 +11,6 @@ defmodule TrafficWatch.AustinDataClient do
   """
   def get_traffic_incidents do
     headers = [{"X-App-Token", get_app_token()}]
-    IO.inspect(headers)
 
     case Finch.build(:get, @base_url, headers)
          |> Finch.request(TrafficWatch.Finch) do
