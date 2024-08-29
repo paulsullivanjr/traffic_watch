@@ -1,0 +1,14 @@
+[package]
+name = "coord_transform"
+version = "0.1.0"
+authors = []
+edition = "2021"
+
+[lib]
+name = "coord_transform"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustler = "0.34.0"
+proj = "0.27.2"

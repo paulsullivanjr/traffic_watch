@@ -4,7 +4,6 @@ defmodule TrafficWatch.AustinDataClient do
   """
 
   @base_url "https://datahub.austintexas.gov/resource/dx9v-zd7x.json?traffic_report_status=ACTIVE"
-  # @base_url "https://datahub.austintexas.gov/resource/dx9v-zd7x.json?traffic_report_id=EE02C29275E85AEDD7D971820672CE0454733B81_1723251557"
 
   @doc """
   Fetches the traffic incidents from the Austin Open Data Portal.
@@ -24,6 +23,54 @@ defmodule TrafficWatch.AustinDataClient do
         {:error, reason}
     end
   end
+
+  def seed_data do
+    "/Users/paulsullivan/Downloads/TxDOT_DCIS_All_Projects_-2097923559319759537.geojson"
+    |> process_geojson_file()
+  end
+
+  def process_geojson_file(file_path) do
+    file_path
+    |> File.stream!()
+    |> Stream.chunk_every(1000)
+    |> Stream.each(&create_oban_job/1)
+    |> Stream.run()
+  end
+
+  defp create_oban_job(payload) do
+    feature_collection =
+      payload
+      |> Jason.decode!(keys: :strings)
+
+    updated_features =
+      feature_collection["features"]
+      |> Enum.filter(&filter_feature/1)
+      |> Enum.map(fn feature ->
+        updated_properties =
+          Map.new(feature["properties"], fn {k, v} ->
+            {k, v}
+          end)
+
+        %{feature | "properties" => updated_properties}
+      end)
+      |> Enum.chunk_every(20)
+      |> Enum.each(fn chunk ->
+        %{"features" => chunk}
+        |> TrafficWatch.GeoJSONChunkProcessor.new()
+        |> Oban.insert()
+      end)
+  end
+
+  defp filter_feature(%{
+         "properties" => %{
+           "DISTRICT_NAME" => "Austin",
+           "PROJ_STAT" => "Active",
+           "PROJ_STG" => "Construction"
+         }
+       }),
+       do: true
+
+  defp filter_feature(_), do: false
 
   defp get_app_token do
     System.get_env("AUSTIN_DATA_APP_TOKEN")

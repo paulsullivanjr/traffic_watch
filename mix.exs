@@ -29,8 +29,8 @@ defmodule TrafficWatch.MixProject do
 
   # Specifies your project dependencies.
   #
-  # Type `mix help deps` for examples and options.
   defp deps do
+    # Type `mix help deps` for examples and options.
     [
       {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.7.14"},
@@ -60,7 +60,9 @@ defmodule TrafficWatch.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:dotenv, "~> 3.1"}
+      {:dotenv, "~> 3.1"},
+      {:rustler, "~> 0.34.0"},
+      {:oban, "~> 2.18"}
     ]
   end
 

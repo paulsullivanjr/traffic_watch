@@ -14,6 +14,7 @@ defmodule TrafficWatch.Application do
       {Phoenix.PubSub, name: TrafficWatch.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: TrafficWatch.Finch},
+      {Oban, Application.fetch_env!(:traffic_watch, Oban)},
       # Start a worker by calling: TrafficWatch.Worker.start_link(arg)
       # {TrafficWatch.Worker, arg},
       # Start to serve requests, typically the last entry
