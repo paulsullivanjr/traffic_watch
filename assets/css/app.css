@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import "leaflet/dist/leaflet.css";
 
 /* This file is for your main application CSS */
 
@@ -39,15 +38,4 @@
 
 .menu-item:hover {
     @apply hover:text-twBlue-light;
-}
-
-.img-down-arrow::after {
-    content: "";
-    position: absolute;
-    right: -10px;
-    top: 45%;
-    transform: translateY(-50%);
-    border-width: 0 3px 3px 3px;
-    border-color: transparent transparent white transparent;
-    border-style: solid;
 }

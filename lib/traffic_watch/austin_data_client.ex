@@ -24,6 +24,7 @@ defmodule TrafficWatch.AustinDataClient do
     end
   end
 
+  # Place holder, not to be used at this time
   def seed_data do
     "/Users/paulsullivan/Downloads/TxDOT_DCIS_All_Projects_-2097923559319759537.geojson"
     |> process_geojson_file()
@@ -73,6 +74,6 @@ defmodule TrafficWatch.AustinDataClient do
   defp filter_feature(_), do: false
 
   defp get_app_token do
-    System.get_env("AUSTIN_DATA_APP_TOKEN")
+    System.get_env("AUSTIN_DATA_APP_TOKEN", "")
   end
 end
