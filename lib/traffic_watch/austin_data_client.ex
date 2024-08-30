@@ -26,14 +26,16 @@ defmodule TrafficWatch.AustinDataClient do
 
   # Place holder, not to be used at this time
   def seed_data do
-    "/Users/paulsullivan/Downloads/TxDOT_DCIS_All_Projects_-2097923559319759537.geojson"
+    TrafficWatch.Repo.delete_all(TrafficWatch.ConstructionProject)
+
+    "./lib/data/austin.geojson"
     |> process_geojson_file()
   end
 
   def process_geojson_file(file_path) do
     file_path
     |> File.stream!()
-    |> Stream.chunk_every(1000)
+    |> Stream.chunk_every(100)
     |> Stream.each(&create_oban_job/1)
     |> Stream.run()
   end
@@ -45,7 +47,6 @@ defmodule TrafficWatch.AustinDataClient do
 
     updated_features =
       feature_collection["features"]
-      |> Enum.filter(&filter_feature/1)
       |> Enum.map(fn feature ->
         updated_properties =
           Map.new(feature["properties"], fn {k, v} ->
@@ -61,17 +62,6 @@ defmodule TrafficWatch.AustinDataClient do
         |> Oban.insert()
       end)
   end
-
-  defp filter_feature(%{
-         "properties" => %{
-           "DISTRICT_NAME" => "Austin",
-           "PROJ_STAT" => "Active",
-           "PROJ_STG" => "Construction"
-         }
-       }),
-       do: true
-
-  defp filter_feature(_), do: false
 
   defp get_app_token do
     System.get_env("AUSTIN_DATA_APP_TOKEN", "")
