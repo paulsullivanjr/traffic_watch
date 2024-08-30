@@ -45,7 +45,6 @@ defmodule TrafficWatch.AustinDataClient do
       payload
       |> Jason.decode!(keys: :strings)
 
-    updated_features =
       feature_collection["features"]
       |> Enum.map(fn feature ->
         updated_properties =
